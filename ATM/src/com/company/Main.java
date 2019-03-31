@@ -4,7 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        ATM_Menu hi=new ATM_Menu();
-        hi.getLogIn();
+
+        Account h1=new Account();
+        h1.getLogIn();
     }
 }
