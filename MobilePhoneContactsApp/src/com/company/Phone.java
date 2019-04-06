@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Phone {
     private static Scanner scanner=new Scanner(System.in);
@@ -39,5 +40,29 @@ public class Phone {
             System.out.println("Contact added to device.");
         }
     }
+
+    public void removeContact(){
+        System.out.println("Enter contact name:");
+        String CName=scanner.nextLine();
+        for(int i=0;i<deviceContacts.size();i++){
+            if(deviceContacts.get(i).getName().toUpperCase().equals(CName.toUpperCase())){
+                deviceContacts.remove(i);
+                System.out.println("Successfully removed contact.");
+            }
+            else {
+                System.out.println("Contact name not found!");
+            }
+        }
+    }
+
+    public void printContacts(){
+        System.out.println("Contact List");
+
+        System.out.println("The contacts are");
+        for(int i=0;i<deviceContacts.size();i++){
+            System.out.println(deviceContacts.get(i).getName()+"-->"+deviceContacts.get(i).getPhoneNumber());
+        }
+    }
+
 
 }

@@ -5,10 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-
     private static Scanner scan=new Scanner(System.in);
-
-
 
     public static void main(String[] args) {
 	// write your code here
@@ -31,14 +28,18 @@ public class Main {
                     LG.addNewContact();
                     break;
                 case 2:
-                    removeContact();
+                    LG.removeContact();
                     break;
                 case 3:
-                    updateContact();
+                    //updateContact();
                     break;
-
+                case 4:
+                    LG.printContacts();
+                    break;
+                default:
+                    System.out.println("Choose a valid option");
+                    break;
             }
-
         }
     }
 
@@ -50,6 +51,5 @@ public class Main {
         System.out.println("Press 4 to view all contacts");
         System.out.println("Press 5 to Print all the actions.");
     }
-
    
 }
