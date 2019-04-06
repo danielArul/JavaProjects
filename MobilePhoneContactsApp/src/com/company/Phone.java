@@ -41,18 +41,74 @@ public class Phone {
         }
     }
 
-    public void removeContact(){
-        System.out.println("Enter contact name:");
-        String CName=scanner.nextLine();
-        for(int i=0;i<deviceContacts.size();i++){
-            if(deviceContacts.get(i).getName().toUpperCase().equals(CName.toUpperCase())){
-                deviceContacts.remove(i);
-                System.out.println("Successfully removed contact.");
+
+    public int findContactByName(String contactName){
+        for (int i = 0; i < deviceContacts.size(); i++) {
+            if (deviceContacts.get(i).getName().toUpperCase().equals(contactName.toUpperCase())) {
+                return i;
             }
-            else {
-                System.out.println("Contact name not found!");
+            }
+            return -1;
+        }
+
+    public int findContactByNumber(int contactNumber){
+        for (int i = 0; i < deviceContacts.size(); i++) {
+            if (deviceContacts.get(i).getPhoneNumber()==contactNumber) {
+                return i;
             }
         }
+        return -1;
+    }
+
+
+
+
+    public void removeContact() {
+        System.out.println("Press 1 remove the contact name");
+        System.out.println("Press 2 to remove the contact number");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice == 1) {
+            System.out.println("Enter contact name:");
+            String CName = scanner.nextLine();
+
+            int index=findContactByName(CName);
+
+            if(index>=0){
+                deviceContacts.remove(index);
+                System.out.println("Contact Successfuly removed");
+            }
+            else{
+                System.out.println("Contact name not found.");
+            }
+
+
+        }
+        else if(choice==2){
+            System.out.println("Enter contact number");
+            int CNumber=scanner.nextInt();
+
+            int index=findContactByNumber(CNumber);
+
+            if(index>=0){
+                deviceContacts.remove(index);
+                System.out.println("Contact Successfuly removed");
+            }
+            else{
+                System.out.println("Contact name not found.");
+            }
+
+        }
+        else {
+            System.out.println("Response not valid.");
+        }
+
+    }
+
+
+    public void updateContact(){
+
     }
 
     public void printContacts(){
@@ -66,3 +122,4 @@ public class Phone {
 
 
 }
+
