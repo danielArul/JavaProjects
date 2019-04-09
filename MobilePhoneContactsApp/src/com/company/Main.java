@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -15,8 +16,16 @@ public class Main {
         printActions();
 
         while (!quit){
-            System.out.println("Enter action number:");
-            int action=scan.nextInt();
+            int action=-1;
+            try{
+                System.out.println("Enter action number:");
+                action=scan.nextInt();
+
+             }
+             catch(InputMismatchException ex) {
+                 System.out.println("Please try again");
+             }
+
             scan.nextLine();
 
             switch (action){
@@ -31,7 +40,7 @@ public class Main {
                     LG.removeContact();
                     break;
                 case 3:
-                    //updateContact();
+                    LG.updateContact();
                     break;
                 case 4:
                     LG.printContacts();

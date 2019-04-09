@@ -27,18 +27,20 @@ public class Phone {
     public void addNewContact(){
         System.out.println("Enter Contact name");
         String contactName=scanner.nextLine();
-        System.out.println("Enter Phone number");
-        int contactNumber=scanner.nextInt();
-        scanner.nextLine();
 
-        Contact newContact= Contact.createContact(contactName,contactNumber);
-        if(findContact(newContact.getName())){
+        if(findContact(contactName)){
             System.out.println("Contact already exists.");
         }
-        else {
+        else{
+            System.out.println("Enter Phone number");
+            int contactNumber=scanner.nextInt();
+            scanner.nextLine();
+
+            Contact newContact= Contact.createContact(contactName,contactNumber);
             deviceContacts.add(newContact);
             System.out.println("Contact added to device.");
         }
+
     }
 
 
@@ -88,6 +90,7 @@ public class Phone {
         else if(choice==2){
             System.out.println("Enter contact number");
             int CNumber=scanner.nextInt();
+            scanner.nextLine();
 
             int index=findContactByNumber(CNumber);
 
@@ -108,7 +111,52 @@ public class Phone {
 
 
     public void updateContact(){
+        System.out.println("Press 1 to update name.");
+        System.out.println("Press 2 to update contact number.");
+        int choice= scanner.nextInt();
+        scanner.nextLine();
 
+        if(choice==1){
+            System.out.println("Enter contact name:");
+            String CName = scanner.nextLine();
+
+            int index=findContactByName(CName);
+
+            if(index>=0){
+                System.out.println("Enter new contact name.");
+                String newContactName=scanner.nextLine();
+
+                deviceContacts.get(index).setName(newContactName);
+
+            }
+            else{
+                System.out.println("Contact name not found.");
+            }
+
+        }
+
+        else if(choice==2){
+            System.out.println("Enter contact number");
+            int CNumber=scanner.nextInt();
+            scanner.nextLine();
+
+            int index=findContactByNumber(CNumber);
+
+            if(index>=0){
+                System.out.println("Enter new contact number.");
+                int newContactNumber=scanner.nextInt();
+                scanner.nextLine();
+
+                deviceContacts.get(index).setPhoneNumber(newContactNumber);
+            }
+            else{
+                System.out.println("Contact name not found.");
+            }
+
+        }
+        else {
+            System.out.println("Invalid response");
+    }
     }
 
     public void printContacts(){
